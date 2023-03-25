@@ -12,13 +12,13 @@ int cbinsearch(int* arr, int size, int value) {
                     ++k;
                 if (arr[((r + l) / 2) + i] == value)
                     ++k;
-                if (arr[((r + l) / 2) - i] != value && arr[((r + l) / 2) + i] != value)
+                int m = (r + l) / 2;
+                if (arr[m - i] != value && arr[m + i] != value)
                     break;
                 ++i;
             }
             break;
-        }
-        else {
+        } else {
             if (arr[(r + l) / 2] > value)
                 r = (r + l) / 2;
             if (arr[(r + l) / 2] < value)
@@ -29,8 +29,8 @@ int cbinsearch(int* arr, int size, int value) {
 }
 int countPairs1(int *arr, int len, int value) {
     int k = 0;
-    for (int i = 0; i < len; ++i){
-        for (int j = i+1; j < len; ++j) {
+    for (int i = 0; i < len; ++i) {
+        for (int j = i + 1; j < len; ++j) {
             if (arr[i] + arr[j] == value)
                 ++k;
         }
